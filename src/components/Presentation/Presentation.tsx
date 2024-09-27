@@ -1,17 +1,21 @@
-import { FC, useMemo, useState } from 'react';
-import { PresentationContent, Toolbar } from './components';
-import { Flex } from 'antd';
-import { useParams } from 'react-router-dom';
+import { FC, useMemo, useState } from "react";
+import { PresentationContent, Toolbar } from "./components";
+import { Flex } from "antd";
+import { useParams } from "react-router-dom";
 import {
   useAttachedFiles,
   useGeneratedPresentation,
   usePresentation,
-} from './hooks';
-import Preview from './components/Preview';
+} from "./hooks";
+import Preview from "./components/Preview";
+import { COPIED_SLIDE } from "src/helpers/constants";
 
 const Presentation: FC = () => {
-  const [typeContent, setTypeContent] = useState<'presentation' | 'preview'>(
-    'presentation'
+  const [typeContent, setTypeContent] = useState<"presentation" | "preview">(
+    "presentation"
+  );
+  const [slideIsCopied, setSlideIsCopied] = useState<boolean>(
+    !!localStorage.getItem(COPIED_SLIDE)
   );
   const { id } = useParams<{ id: string }>();
   const presentationId = +(id || 0);
@@ -44,20 +48,22 @@ const Presentation: FC = () => {
   return (
     <Flex gap="middle">
       <Toolbar
-        title={presentation?.title || 'Presentation'}
+        title={presentation?.title || "Presentation"}
         typeContent={typeContent}
         presentationId={presentationId}
         setTypeContent={setTypeContent}
-        isGenerating={status === 'loading'}
+        isGenerating={status === "loading"}
         hasFullData={hasFullData}
-        hasGenerated={status === 'success'}
+        hasGenerated={status === "success"}
         generatePresentation={generatePresentation}
       />
 
-      {typeContent === 'preview' && <Preview screenshots={screenshots} />}
-      {typeContent == 'presentation' && (
+      {typeContent === "preview" && <Preview screenshots={screenshots} />}
+      {typeContent == "presentation" && (
         <PresentationContent
-          generating={status === 'loading'}
+          generating={status === "loading"}
+          slideIsCopied={slideIsCopied}
+          setSlideIsCopied={setSlideIsCopied}
           presentationId={presentationId}
           presentation={presentation}
           setPresentation={setPresentation}

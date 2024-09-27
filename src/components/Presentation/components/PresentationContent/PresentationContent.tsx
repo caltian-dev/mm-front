@@ -1,18 +1,19 @@
 import { FC, useEffect, useRef, useCallback } from "react";
 import { Flex, Spin, Button } from "antd";
-import styles from './PresentationContent.module.css';
-import Title from 'antd/es/typography/Title';
-import { Presentation, Slide } from 'src/types/presentation';
+import styles from "./PresentationContent.module.css";
+import Title from "antd/es/typography/Title";
+import { Presentation, Slide } from "src/types/presentation";
 import {
   CreateSlide,
   InfoSection,
   SlideItem,
   AttachedFiles,
   PresentationTemplate,
-} from './components';
-import { UpdateAttachedFile } from '../../hooks/useAttachedFiles';
+} from "./components";
+import { UpdateAttachedFile } from "../../hooks/useAttachedFiles";
 import { createSlide } from "src/clientApi/slideApi";
 import { COPIED_SLIDE } from "src/helpers/constants";
+
 type Props = {
   slideIsCopied: boolean;
   setSlideIsCopied: (slideIsCopied: boolean) => void;
@@ -61,11 +62,12 @@ const PresentationContent: FC<Props> = ({
     },
     [presentationId, setNewSlide]
   );
+
   useEffect(() => {
     if (generating) {
       contentRef.current?.scrollIntoView({
-        behavior: 'instant',
-        block: 'start',
+        behavior: "instant",
+        block: "start",
       });
     }
   }, [generating]);
@@ -73,16 +75,8 @@ const PresentationContent: FC<Props> = ({
   return (
     <>
       <div className={styles.content}>
-        <Spin
-          spinning={generating}
-          size="large"
-          tip="Creating a presentation"
-        >
-          <Flex
-            vertical
-            gap="middle"
-            ref={contentRef}
-          >
+        <Spin spinning={generating} size="large" tip="Creating a presentation">
+          <Flex vertical gap="middle" ref={contentRef}>
             <InfoSection
               title="Title"
               presentation={presentation}
@@ -115,17 +109,16 @@ const PresentationContent: FC<Props> = ({
               onUpdated={setPresentation}
             />
             <Title level={5}>Slides:</Title>
-            <Flex
-              gap="middle"
-              wrap
-            >
+            <Flex gap="middle" wrap>
               {presentation?.slides?.map((slide, i) => (
                 <SlideItem
+                  setSlideIsCopied={setSlideIsCopied}
                   key={slide.id}
                   slide={slide}
                   onDelete={deleteSlide}
                   onUpdated={updateSlide}
                   workbooks={presentation?.workbook}
+                  // workbooks={attachedFiles}
                   position={i + 1}
                 />
               ))}

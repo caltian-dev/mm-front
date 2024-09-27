@@ -104,6 +104,12 @@ const SlideForm: FC<Props> = ({
           </Select>
         </Form.Item>
       </Flex>
+      {/* <Form.Item
+        name="display_on_slide"
+        valuePropName="checked"
+      >
+        <Checkbox>Display on slide?</Checkbox>
+      </Form.Item> */}
       <Form.Item
         name="slide_option"
         label="Select Slide Option:"

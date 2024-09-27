@@ -61,8 +61,10 @@ const SlideItem: FC<Props> = ({
     [onUpdated, slide]
   );
   const handleCopy = () => {
+    // const keysToPick = ["perform_analysis", "display_on_slide", "specific_title", "specific_instructions", "input_spreadsheet", "workbook"];
     let copiedSlideValues = {
       "perform_analysis": slide.perform_analysis,
+      // "display_on_slide": slide.display_on_slide,
       "slide_option": slide.slide_option,
       "specific_title": slide.specific_title,
       "specific_instructions": slide.specific_instructions,

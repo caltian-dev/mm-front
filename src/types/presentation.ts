@@ -2,6 +2,7 @@ export type Slide = {
   id: number;
   position: number;
   perform_analysis: boolean;
+  // display_on_slide: boolean;
   slide_option: number;
   specific_title: string;
   specific_instructions: string;
