@@ -7,8 +7,9 @@ import { SignInResponse } from './authApi';
 const clientApi = axios.create({
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',  // Ensure the server allows CORS
   },
-  baseURL: 'https://c25c7e3b15ad2ff85d4e919355865931.serveo.net',
+  baseURL: 'https://f342-94-46-23-20.ngrok-free.app',
 });
 
 clientApi.interceptors.request.use(
