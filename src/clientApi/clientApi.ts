@@ -9,7 +9,7 @@ const clientApi = axios.create({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',  // Ensure the server allows CORS
   },
-  baseURL: 'https://f342-94-46-23-20.ngrok-free.app',
+  baseURL: 'https://3371-94-46-23-20.ngrok-free.app',
 });
 
 clientApi.interceptors.request.use(
