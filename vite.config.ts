@@ -17,7 +17,7 @@ export default defineConfig({
         // target: 'http://164.68.115.181:7577/',
         // target: 'https://pptai.dataox.io/',
         // target: 'http://127.0.0.1:8000',
-        target: 'https://a1aa-94946-23-20.ngrok-free.app/',
+        target: 'https://879e-94-46-23-20.ngrok-free.app/',
         changeOrigin: true,
       },
     },
