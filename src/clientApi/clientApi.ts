@@ -8,7 +8,7 @@ const clientApi = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  baseURL: 'https://d17f-94-46-23-20.ngrok-free.app',
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://d17f-94-46-23-20.ngrok-free.app',
 });
 
 clientApi.interceptors.request.use(
