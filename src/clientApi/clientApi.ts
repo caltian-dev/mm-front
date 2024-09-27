@@ -8,7 +8,7 @@ const clientApi = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  baseURL: 'https://a5b2-94-46-23-20.ngrok-free.app',
+  baseURL: 'http://a5b2-94-46-23-20.ngrok-free.app',
 });
 
 clientApi.interceptors.request.use(
